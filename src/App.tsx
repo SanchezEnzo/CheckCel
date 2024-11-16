@@ -19,15 +19,13 @@ export default function Component() {
     setResult(null)
 
     try {
-      // Simulate API call - replace with actual API endpoint
       await new Promise(resolve => setTimeout(resolve, 1000))
 
-      // Mock response - replace with actual API call
       const found = Math.random() > 0.5
       setResult({
         found,
         message: found
-          ? '¡Advertencia! Este número está registrado en la base de datos.'
+          ? 'Este número está registrado en la base de datos.'
           : 'Este número no está registrado en la base de datos.'
       })
     } catch (error) {
@@ -41,7 +39,7 @@ export default function Component() {
   }
 
   return (
-    <div className='min-h-screen bg-[#b4a7ed] flex flex-col items-center px-4 py-12'>
+    <main className='min-h-screen bg-[#b4a7ed] flex flex-col items-center px-4 py-12'>
       <h1 className='text-4xl md:text-5xl font-bold mb-4'>CheckCel</h1>
       <p className='text-lg mb-8'>Sé prevenido/a, no caigas.</p>
 
@@ -54,7 +52,7 @@ export default function Component() {
             type='tel'
             value={phone}
             onChange={e => setPhone(e.target.value)}
-            placeholder='Ej: 01133451907 o 225647322'
+            placeholder='Ej: 01133451908 o 225647322'
             pattern='[0-9]*'
             className='bg-[#e8ffd6] border-none text-black placeholder:text-gray-600'
             required
@@ -62,22 +60,25 @@ export default function Component() {
           <Button
             type='submit'
             disabled={loading || phone.length < 8}
-            className='bg-black hover:bg-gray-800'
+            className='bg-[#000000bb] hover:bg-gray-800 rounded-r-xl'
           >
-            <Search className='h-4 w-4' />
+            <Search className='h-4 w-4 text-white' />
             <span className='sr-only'>Buscar</span>
           </Button>
         </div>
 
         {result && (
-          <Alert
-            variant={result.found ? 'destructive' : 'default'}
-            className='mt-4'
+          <div
+            className={`flex w-full justify-center items-center p-4 outline outline-[0.5px] rounded-xl ${result.found ? 'bg-neutral-800 outline-neutral-600' : 'bg-lime-200 outline-lime-200'} `}
           >
-            <AlertDescription>{result.message}</AlertDescription>
-          </Alert>
+            <p
+              className={`${result.found ? 'text-red-500' : 'text-green-800'} w-full text-center`}
+            >
+              {result.message}
+            </p>
+          </div>
         )}
       </form>
-    </div>
+    </main>
   )
 }
