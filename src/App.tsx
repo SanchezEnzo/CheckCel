@@ -36,7 +36,7 @@ export default function Component() {
 
   return (
     <main className='min-h-screen bg-[#b4a7ed] flex flex-col items-center px-4 py-12'>
-      <h1 className='text-4xl md:text-5xl font-bold mb-4'>CheckCel</h1>
+      <h1 className='text-4xl md:text-5xl font-geist font-semibold mb-4  '>CheckCel</h1>
       <p className='text-lg mb-8'>Sé prevenido/a, no caigas.</p>
 
       <form
