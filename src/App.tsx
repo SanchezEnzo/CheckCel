@@ -1,8 +1,5 @@
-
 import { useState } from 'react'
 import { Search } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 
 export default function Component() {
   const [phone, setPhone] = useState('')
@@ -47,23 +44,23 @@ export default function Component() {
         className='w-full max-w-md flex flex-col gap-4'
       >
         <div className='flex gap-2'>
-          <Input
+          <input
             type='tel'
             value={phone}
             onChange={e => setPhone(e.target.value)}
             placeholder='Ej: 01133451908 o 225647322'
             pattern='[0-9]*'
-            className='bg-[#e8ffd6] border-none text-black placeholder:text-gray-600'
+            className='bg-[#e8ffd6] border-none text-black placeholder:text-gray-600 w-full rounded-l-xl pl-2 focus:outline-none'
             required
           />
-          <Button
+          <button
             type='submit'
             disabled={loading || phone.length < 8}
-            className='bg-[#000000bb] hover:bg-gray-800 rounded-r-xl'
+            className='bg-[#000000bb] hover:bg-gray-800 rounded-r-xl w-10 h-8 flex items-center justify-center'
           >
             <Search className='h-4 w-4 text-white' />
             <span className='sr-only'>Buscar</span>
-          </Button>
+          </button>
         </div>
 
         {result && (
